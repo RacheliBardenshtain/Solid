@@ -1,11 +1,14 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using solid.Core.Models;
 using solid.Core.Repositories;
+using solid.Core;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using solid.Core.Dtos;
 
 namespace solid.Data.Repositories
 {
@@ -13,17 +16,23 @@ namespace solid.Data.Repositories
     {
 
         private readonly DataContext _context;
-        public UserRepository(DataContext context)
+        private readonly IMapper _mapper;
+        public UserRepository(DataContext context,IMapper mapper)
         {
+            _mapper = mapper;
             _context = context;
         }
-        public DbSet<User> GetList()
+        public IEnumerable<UserDto> GetList()
         {
-            return _context.Users;
+            var users=_context.Users;
+            var usersDto=_mapper.Map<IEnumerable<UserDto>>(users);
+            return usersDto;
         }
-        public void Post(User user)
+
+
+        public void Post(UserDto user)
         {
-            _context.Users.Add(user);
+            _context.Users.Add(_mapper.Map<User>(user));
             _context.SaveChanges();
         }
     }

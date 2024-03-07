@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
+using solid.Core.Dtos;
 using solid.Core.Models;
 using solid.Core.Repositories;
 using System;
@@ -13,17 +15,21 @@ namespace solid.Data.Repositories
     {
 
         private readonly DataContext _context;
-        public JobRepository(DataContext context)
+        private readonly IMapper _mapper;
+        public JobRepository(DataContext context,IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
-        public DbSet<Job> GetList()
+        public IEnumerable<JobDto> GetList()
         {
-            return _context.Jobs;
+            var jobList = _context.Jobs;
+            var dtoList = _mapper.Map<IEnumerable<JobDto>>(jobList);
+            return dtoList;
         }
-        public void Post(Job job)
+        public void Post(JobDto job)
         {
-            _context.Jobs.Add(job);
+            _context.Jobs.Add(_mapper.Map<Job>(job));
             _context.SaveChanges();
         }
     }

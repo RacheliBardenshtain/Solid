@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using solid.Core.Dtos;
 using solid.Core.Models;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ namespace solid.Core.Services
 {
     public interface IUserService
     {
-        DbSet<User> GetAll();
-        void Post(User user);
+        IEnumerable<UserDto> GetAll();
+        void Post(UserDto user);
     }
 }

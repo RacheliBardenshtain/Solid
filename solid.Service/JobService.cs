@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using solid.Core.Dtos;
 using solid.Core.Models;
 using solid.Core.Repositories;
 using solid.Core.Services;
@@ -18,12 +19,12 @@ namespace solid.Service
         {
             _jobRepository = jobRepository;
         }
-        public DbSet<Job> GetAll()
+        public IEnumerable<JobDto> GetAll()
         {
             return _jobRepository.GetList();
         }
 
-        public  void Post(Job job)
+        public  void Post(JobDto job)
         {
             _jobRepository.Post(job);
         }

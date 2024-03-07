@@ -1,6 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using solid.Core.Models;
 using solid.Core.Services;
+using solid.Core;
+using solid.Core.Dtos;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -20,8 +23,9 @@ namespace solid.Controllers
 
         // GET: api/<InterviewController>
         [HttpGet]
-        public IEnumerable<Interview> Get()
+        public IEnumerable<InterviewDto> Get()
         {
+
             return _interviewService.GetAll();
         }
         //// GET: api/<InterviewController>
@@ -40,7 +44,7 @@ namespace solid.Controllers
 
         // POST api/<InterviewController>
         [HttpPost]
-        public void Post(Interview interview)
+        public void Post(InterviewDto interview)
         {
            _interviewService.Post(interview);
         }

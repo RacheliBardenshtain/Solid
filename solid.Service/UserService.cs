@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using solid.Core.Dtos;
 using solid.Core.Models;
 using solid.Core.Repositories;
 using solid.Core.Services;
@@ -18,12 +19,12 @@ namespace solid.Service
         {
             _userRepository = userRepository;
         }
-        public DbSet<User> GetAll()
+        public IEnumerable<UserDto> GetAll()
         {
             return _userRepository.GetList();
         }
 
-        public void Post(User user)
+        public void Post(UserDto user)
         {
             _userRepository.Post(user);
         }

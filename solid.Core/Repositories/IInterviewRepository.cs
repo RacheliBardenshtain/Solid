@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using solid.Core.Dtos;
 using solid.Core.Models;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ namespace solid.Core.Repositories
 {
     public interface IInterviewRepository
     {
-        IEnumerable<Interview> GetList();
-         void Post(Interview interview);
+        IEnumerable<InterviewDto> GetList();
+        void Post(InterviewDto interview);
     }
 }

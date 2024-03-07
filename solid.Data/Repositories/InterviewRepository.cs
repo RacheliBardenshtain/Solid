@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
+using solid.Core.Dtos;
 using solid.Core.Models;
 using solid.Core.Repositories;
 using System;
@@ -13,19 +15,25 @@ namespace solid.Data.Repositories
     {
 
         private readonly DataContext _context;
-        public InterviewRepository(DataContext context)
+        private readonly IMapper _mapper;
+
+        public InterviewRepository(DataContext context,IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
-        public IEnumerable<Interview> GetList()
+        public IEnumerable<InterviewDto> GetList()
         {
-            return _context.Interviews.Include(i=>i.User);
+            var interviews = _context.Interviews.Include(i => i.User);
+            var interviewsDto = _mapper.Map<IEnumerable<InterviewDto>>(interviews);
+            return interviewsDto;
             
         }
 
-        public void Post(Interview interview)
+        public void Post(InterviewDto interview)
         {
-            _context.Interviews.Add(interview);
+            var inter = _mapper.Map<Interview>(interview);
+            _context.Interviews.Add(inter);
             _context.SaveChanges();
         }
     }

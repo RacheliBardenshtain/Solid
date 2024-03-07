@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using solid.Core.Dtos;
 using solid.Core.Models;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ namespace solid.Core.Services
 {
     public interface IJobService
     {
-        DbSet<Job> GetAll();
-        void Post(Job job);
+        IEnumerable<JobDto> GetAll();
+        void Post(JobDto job);
     }
 }

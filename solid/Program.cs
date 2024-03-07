@@ -1,3 +1,4 @@
+using solid.Core.mapping;
 using solid.Core.Repositories;
 using solid.Core.Services;
 using solid.Data;
@@ -22,7 +23,7 @@ builder.Services.AddScoped<IInterviewService, InterviewService>();
 builder.Services.AddScoped<IInterviewRepository, InterviewRepository>();
 
 builder.Services.AddDbContext<DataContext>();
-
+builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 // Configure the HTTP request pipeline.
 

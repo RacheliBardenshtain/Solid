@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using solid.Core.Dtos;
 using solid.Core.Models;
 using solid.Core.Services;
 
@@ -20,7 +21,7 @@ namespace solid.Controllers
 
         // GET: api/<InterviewController>
         [HttpGet]
-        public IEnumerable<Job> Get()
+        public IEnumerable<JobDto> Get()
         {
             return _jobService.GetAll();
         }
@@ -41,7 +42,7 @@ namespace solid.Controllers
 
         // POST api/<JobController>
         [HttpPost]
-        public void Post(Job job)
+        public void Post(JobDto job)
         {
             _jobService.Post(job);
         }

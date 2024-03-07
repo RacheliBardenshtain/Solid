@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using solid.Core.Dtos;
 using solid.Core.Models;
 using solid.Core.Services;
 
@@ -20,7 +21,7 @@ namespace solid.Controllers
 
         // GET: api/<InterviewController>
         [HttpGet]
-        public IEnumerable<User> Get()
+        public IEnumerable<UserDto> Get()
         {
             return _userService.GetAll();
         }
@@ -40,7 +41,7 @@ namespace solid.Controllers
 
         // POST api/<UserController>
         [HttpPost]
-        public void Post(User user)
+        public void Post(UserDto user)
         {
             _userService.Post(user);
         }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using solid.Core.Dtos;
 using solid.Core.Models;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ namespace solid.Core.Services
 {
     public interface IInterviewService
     {
-        IEnumerable<Interview> GetAll();
-        void Post(Interview interview);
+        IEnumerable<InterviewDto> GetAll();
+        void Post(InterviewDto interview);
     }
 }

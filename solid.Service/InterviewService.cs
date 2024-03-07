@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using solid.Core.Dtos;
 using solid.Core.Models;
 using solid.Core.Repositories;
 using solid.Core.Services;
@@ -18,12 +19,12 @@ namespace solid.Service
         {
             _interviewRepository =interviewRepository ;
         }
-        public IEnumerable<Interview> GetAll()
+        public IEnumerable<InterviewDto> GetAll()
         {
             return _interviewRepository.GetList();
         }
 
-        public void Post(Interview interview)
+        public void Post(InterviewDto interview)
         {
             _interviewRepository.Post(interview);
         }
