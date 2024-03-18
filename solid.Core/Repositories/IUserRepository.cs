@@ -11,7 +11,7 @@ namespace solid.Core.Repositories
 {
     public interface IUserRepository
     {
-        IEnumerable<UserDto> GetList();
-        void Post(UserDto user);
+        Task<IEnumerable<UserDto>> GetAsync();
+        Task<User> PostAsynce(UserDto user);
     }
 }

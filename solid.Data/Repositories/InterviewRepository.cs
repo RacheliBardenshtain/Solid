@@ -22,19 +22,21 @@ namespace solid.Data.Repositories
             _context = context;
             _mapper = mapper;
         }
-        public IEnumerable<InterviewDto> GetList()
+
+        public async Task<IEnumerable<InterviewDto>> GetListAsync()
         {
             var interviews = _context.Interviews.Include(i => i.User);
             var interviewsDto = _mapper.Map<IEnumerable<InterviewDto>>(interviews);
-            return interviewsDto;
+            return await Task.FromResult(interviewsDto);
             
         }
 
-        public void Post(InterviewDto interview)
+        public async Task<Interview> PostAsync(InterviewDto interview)
         {
             var inter = _mapper.Map<Interview>(interview);
-            _context.Interviews.Add(inter);
-            _context.SaveChanges();
+             _context.Interviews.Add(inter);
+            await _context.SaveChangesAsync();
+            return  _mapper.Map<Interview>(interview);
         }
     }
 }

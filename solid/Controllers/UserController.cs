@@ -17,13 +17,11 @@ namespace solid.Controllers
         {
             _userService = userService;
         }
-
-
         // GET: api/<InterviewController>
         [HttpGet]
-        public IEnumerable<UserDto> Get()
+        public async Task<IEnumerable<UserDto>> GetAsync()
         {
-            return _userService.GetAll();
+            return await _userService.GetAsync();
         }
         //// GET: api/<UserController>
         //[HttpGet]
@@ -41,9 +39,9 @@ namespace solid.Controllers
 
         // POST api/<UserController>
         [HttpPost]
-        public void Post(UserDto user)
+        public async Task<User> PostAsync(UserDto user)
         {
-            _userService.Post(user);
+           return await  _userService.PostAsynce(user);
         }
 
         //// PUT api/<UserController>/5

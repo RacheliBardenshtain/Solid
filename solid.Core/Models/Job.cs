@@ -12,6 +12,6 @@ namespace solid.Core.Models
         public string Description { get; set; }
         public string RequiredExperience { get; set; }
         public string Category { get; set; }
-        public List<Interview> intervies { get; set; }  //new 
+        public List<Interview> interviews { get; set; }  //new 
     }
 }

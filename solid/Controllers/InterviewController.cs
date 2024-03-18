@@ -23,10 +23,9 @@ namespace solid.Controllers
 
         // GET: api/<InterviewController>
         [HttpGet]
-        public IEnumerable<InterviewDto> Get()
+        public async Task<IEnumerable<InterviewDto>> Get()
         {
-
-            return _interviewService.GetAll();
+            return await _interviewService.GetListAsync();
         }
         //// GET: api/<InterviewController>
         //[HttpGet]
@@ -44,9 +43,9 @@ namespace solid.Controllers
 
         // POST api/<InterviewController>
         [HttpPost]
-        public void Post(InterviewDto interview)
+        public async Task<Interview> Post(InterviewDto interview)
         {
-           _interviewService.Post(interview);
+          return await _interviewService.PostAsync(interview);
         }
 
         //// PUT api/<InterviewController>/5

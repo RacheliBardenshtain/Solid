@@ -19,14 +19,14 @@ namespace solid.Service
         {
             _userRepository = userRepository;
         }
-        public IEnumerable<UserDto> GetAll()
+        public async Task<IEnumerable<UserDto>> GetAsync()
         {
-            return _userRepository.GetList();
+            return await  _userRepository.GetAsync();
         }
 
-        public void Post(UserDto user)
+        public async Task<User> PostAsynce(UserDto user)
         {
-            _userRepository.Post(user);
+          return await _userRepository.PostAsynce(user);
         }
     }
 }

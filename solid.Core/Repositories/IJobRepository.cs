@@ -11,7 +11,7 @@ namespace solid.Core.Repositories
 {
     public interface IJobRepository
     {
-        IEnumerable<JobDto> GetList();
-         void Post(JobDto job);
+        Task<IEnumerable<JobDto>> GetList();
+        Task<Job> PostAsynce(JobDto job);
     }
 }

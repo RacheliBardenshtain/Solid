@@ -11,7 +11,7 @@ namespace solid.Core.Services
 {
     public interface IJobService
     {
-        IEnumerable<JobDto> GetAll();
-        void Post(JobDto job);
+        Task<IEnumerable<JobDto>> GetList();
+        Task<Job> PostAsynce(JobDto job);
     }
 }

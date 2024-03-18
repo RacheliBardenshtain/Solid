@@ -9,6 +9,7 @@ namespace solid.Core.Models
     public class Interview
     {
         public int Id { get; set; }
+        public int CurrentJobId { get; set; }
         public Job CurrentJob { get; set; }
         public DateTime Date { get; set; }
         public int UserId { get; set; }

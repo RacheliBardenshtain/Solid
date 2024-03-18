@@ -10,7 +10,7 @@ namespace solid.Core.Dtos
     public class InterviewDto
     {
         public int Id { get; set; }
-        public Job CurrentJob { get; set; }
+        public int CurrentJobId { get; set; }
         public DateTime Date { get; set; }
         public int UserId { get; set; }
     }

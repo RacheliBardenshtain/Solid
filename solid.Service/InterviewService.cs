@@ -19,14 +19,15 @@ namespace solid.Service
         {
             _interviewRepository =interviewRepository ;
         }
-        public IEnumerable<InterviewDto> GetAll()
+
+        public async Task<IEnumerable<InterviewDto>> GetListAsync()
         {
-            return _interviewRepository.GetList();
+            return await _interviewRepository.GetListAsync();
         }
 
-        public void Post(InterviewDto interview)
+        public async Task<Interview> PostAsync(InterviewDto interview)
         {
-            _interviewRepository.Post(interview);
+           return await  _interviewRepository.PostAsync(interview);
         }
     }
 }

@@ -1,3 +1,4 @@
+using solid;
 using solid.Core.mapping;
 using solid.Core.Repositories;
 using solid.Core.Services;
@@ -43,6 +44,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+
+app.UseMiddleware<ShabbatMiddleware>();
 
 app.MapControllers();
 

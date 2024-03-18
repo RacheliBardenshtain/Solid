@@ -21,9 +21,9 @@ namespace solid.Controllers
 
         // GET: api/<InterviewController>
         [HttpGet]
-        public IEnumerable<JobDto> Get()
+        public async Task<IEnumerable<JobDto>> GetList()
         {
-            return _jobService.GetAll();
+            return await _jobService.GetList();
         }
 
         //        // GET: api/<JobController>
@@ -42,9 +42,9 @@ namespace solid.Controllers
 
         // POST api/<JobController>
         [HttpPost]
-        public void Post(JobDto job)
+        public async Task<Job> PostAsynce(JobDto job)
         {
-            _jobService.Post(job);
+          return  await  _jobService.PostAsynce(job);
         }
 
         //        // PUT api/<JobController>/5

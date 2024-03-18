@@ -19,14 +19,14 @@ namespace solid.Service
         {
             _jobRepository = jobRepository;
         }
-        public IEnumerable<JobDto> GetAll()
+        public async Task<IEnumerable<JobDto>> GetList()
         {
-            return _jobRepository.GetList();
+            return await _jobRepository.GetList();
         }
 
-        public  void Post(JobDto job)
+        public async Task<Job> PostAsynce(JobDto job)
         {
-            _jobRepository.Post(job);
+           return await _jobRepository.PostAsynce(job);
         }
     }
 }

@@ -11,7 +11,7 @@ namespace solid.Core.Services
 {
     public interface IInterviewService
     {
-        IEnumerable<InterviewDto> GetAll();
-        void Post(InterviewDto interview);
+        Task<IEnumerable<InterviewDto>> GetListAsync();
+        Task<Interview> PostAsync(InterviewDto interview);
     }
 }

@@ -21,16 +21,17 @@ namespace solid.Data.Repositories
             _context = context;
             _mapper = mapper;
         }
-        public IEnumerable<JobDto> GetList()
+        public async Task<IEnumerable<JobDto>> GetList()
         {
             var jobList = _context.Jobs;
             var dtoList = _mapper.Map<IEnumerable<JobDto>>(jobList);
-            return dtoList;
+            return await Task.FromResult(dtoList);
         }
-        public void Post(JobDto job)
+        public async Task<Job> PostAsynce(JobDto job)
         {
             _context.Jobs.Add(_mapper.Map<Job>(job));
-            _context.SaveChanges();
+            await  _context.SaveChangesAsync();
+            return _mapper.Map<Job>(job);
         }
     }
 }
